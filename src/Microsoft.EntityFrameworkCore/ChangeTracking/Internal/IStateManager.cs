@@ -32,6 +32,10 @@ namespace Microsoft.EntityFrameworkCore.ChangeTracking.Internal
 
         void StopTracking([NotNull] InternalEntityEntry entry);
 
+        void RecordDanglingDependent(IForeignKey foreignKey, InternalEntityEntry entry);
+
+        IEnumerable<InternalEntityEntry> GetDanglingDependents(IForeignKey foreignKey, InternalEntityEntry entry);
+
         InternalEntityEntry GetPrincipal([NotNull] InternalEntityEntry dependentEntry, [NotNull] IForeignKey foreignKey);
 
         InternalEntityEntry GetPrincipalUsingRelationshipSnapshot([NotNull] InternalEntityEntry dependentEntry, [NotNull] IForeignKey foreignKey);
